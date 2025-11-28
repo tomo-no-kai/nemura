@@ -69,15 +69,26 @@ export default function HomePage() {
       .catch(() => setError("Failed to load data"));
   }, []);
 
+  // useEffect(() => {
+  //   fetch("/api/hatena?type=popular")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.error) setError(data.error);
+  //       else setpopularNews(data);
+  //     })
+  //     .catch(() => setError("Failed to load data"));
+  // }, []);
+
   useEffect(() => {
-    fetch("/api/hatena?type=popular")
-      .then((res) => res.json())
+    fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=769a6d7f91e34fc69e1b5469abb3d6cf')
+    .then((res) => res.json())
       .then((data) => {
         if (data.error) setError(data.error);
-        else setpopularNews(data);
+        else setpopularNews(data.articles);
+        console.log(data)
       })
       .catch(() => setError("Failed to load data"));
-  }, []);
+  }, [])
 
   return (
     <div className="min-h-screen bg-background-light text-white p-4 max-w-md mx-auto">
@@ -100,9 +111,8 @@ export default function HomePage() {
             <GraphicIcon className="w-6 h-6 mr-2" fontSize="medium" />
             <span>音声で要約を聴く</span>
           </button>
-          <p className="text-white text-lg leading-relaxed mt-auto">
+          <p className="text-white text-sm leading-relaxed mt-auto">
             今日の世界を音声で簡単に
-            <br />
             チェックできます！
           </p>
         </div>
@@ -166,7 +176,8 @@ export default function HomePage() {
               {/* 画像 */}
               <div className="w-20 h-20 relative flex-shrink-0">
                 <Image
-                  src={i["hatena:imageurl"]}
+                  // src={i["hatena:imageurl"]}
+                  src={i.urlToImage}
                   alt={i.title}
                   fill
                   className="object-cover rounded-lg"
@@ -181,7 +192,7 @@ export default function HomePage() {
                 <div className="flex justify-between items-center text-xs text-gray-400 mt-2">
                   <div className="flex items-center space-x-2">
                     <span className="text-blue-400">🌐</span>
-                    <span>{i["dc:subject"][0]}</span>
+                    {/* <span>{i["dc:subject"][0]}</span> */}
                   </div>
                   <div>
                     <span>10分</span>

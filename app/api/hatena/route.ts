@@ -26,3 +26,6 @@ export async function GET(req: Request) {
         return NextResponse.json({ error: "Failed to fetch RSS" }, { status: 500 });
     }
 }
+
+
+// 769a6d7f91e34fc69e1b5469abb3d6cf
