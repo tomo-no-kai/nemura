@@ -9,6 +9,7 @@ import {
   GraphicIcon,
 } from "@icons/index";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type HatenaItem = {
   title: string;
@@ -65,30 +66,31 @@ export default function HomePage() {
       .then((data) => {
         if (data.error) setError(data.error);
         else setnewTopics(data);
+        console.log(data);
+      })
+      .catch(() => setError("Failed to load data"));
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/hatena?type=popular")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) setError(data.error);
+        else setpopularNews(data);
       })
       .catch(() => setError("Failed to load data"));
   }, []);
 
   // useEffect(() => {
-  //   fetch("/api/hatena?type=popular")
-  //     .then((res) => res.json())
+  //   fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=769a6d7f91e34fc69e1b5469abb3d6cf')
+  //   .then((res) => res.json())
   //     .then((data) => {
   //       if (data.error) setError(data.error);
-  //       else setpopularNews(data);
+  //       else setpopularNews(data.articles);
+  //       console.log(data)
   //     })
   //     .catch(() => setError("Failed to load data"));
-  // }, []);
-
-  useEffect(() => {
-    fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=769a6d7f91e34fc69e1b5469abb3d6cf')
-    .then((res) => res.json())
-      .then((data) => {
-        if (data.error) setError(data.error);
-        else setpopularNews(data.articles);
-        console.log(data)
-      })
-      .catch(() => setError("Failed to load data"));
-  }, [])
+  // }, [])
 
   return (
     <div className="min-h-screen bg-background-light text-white p-4 max-w-md mx-auto">
@@ -162,10 +164,10 @@ export default function HomePage() {
       <div>
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">Topic News</h2>
-          <div className="flex items-center">
+          <Link href="/ai-summary/1" className="flex items-center">
             <p className="text-[#3A86FF]">すべて見る</p>
             <ArrowRightIcon className="w-4 h-4 text-[#3A86FF] cursor-pointer" />
-          </div>
+          </Link>
         </div>
         <div className="space-y-4">
           {popularNews.slice(0,10).map((i) => (
@@ -176,8 +178,8 @@ export default function HomePage() {
               {/* 画像 */}
               <div className="w-20 h-20 relative flex-shrink-0">
                 <Image
-                  // src={i["hatena:imageurl"]}
-                  src={i.urlToImage}
+                  src={i["hatena:imageurl"]}
+                  // src={i.urlToImage}
                   alt={i.title}
                   fill
                   className="object-cover rounded-lg"
@@ -192,7 +194,7 @@ export default function HomePage() {
                 <div className="flex justify-between items-center text-xs text-gray-400 mt-2">
                   <div className="flex items-center space-x-2">
                     <span className="text-blue-400">🌐</span>
-                    {/* <span>{i["dc:subject"][0]}</span> */}
+                    <span>{i["dc:subject"][0]}</span>
                   </div>
                   <div>
                     <span>10分</span>
