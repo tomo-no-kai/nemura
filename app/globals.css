@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .fade-enter {
   @apply opacity-0;
 }
@@ -16,4 +17,20 @@
 
 .fade-exit-active {
   @apply opacity-0 transition-opacity duration-500 ease-in-out;
+}
+
+.title{
+  @apply text-[24px] font-bold;
+}
+
+.normal{
+  @apply text-[16px] font-semibold;
+}
+
+.desc{
+  @apply text-[12px] text-[#d6d6d6];
+}
+
+.caption{
+  @apply text-[10px];
 }

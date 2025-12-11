@@ -4,7 +4,7 @@ import { ArrowRightIcon, AddCircleIcon, PlayCircleIcon } from "@/assets/icons";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function NewsList() {
+export default function TopicNews() {
   const [popularNews, setpopularNews] = useState<any[]>([]);
   const [newTopics, setnewTopics] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);

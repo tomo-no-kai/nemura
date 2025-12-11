@@ -1,6 +1,5 @@
 "use client";
 import "../globals.css";
-import Image from "next/image";
 import {
   AddCircleIcon,
   PlayCircleIcon,
@@ -10,32 +9,32 @@ import {
 } from "@icons/index";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import SafeImage from "@/components/SafeImage";
 
 type HatenaItem = {
   title: string;
   link: string;
-  'hatena:imageurl': string;
-  'dc:subject'?: string | string[];
+  "hatena:imageurl": string;
+  "dc:subject"?: string | string[];
 };
 
-const FALLBACK_IMAGE_URL = "/default-image.png"; 
-
+const FALLBACK_IMAGE_URL = "/default-image.png";
 
 const NewsCard = ({ news }: { news: HatenaItem }) => {
-  const imageUrl = news['hatena:imageurl'] || FALLBACK_IMAGE_URL;
-  const subject = Array.isArray(news['dc:subject']) 
-    ? news['dc:subject'][0] 
-    : news['dc:subject'] || '未分類';
+  const imageUrl = news["hatena:imageurl"] || FALLBACK_IMAGE_URL;
+  const subject = Array.isArray(news["dc:subject"])
+    ? news["dc:subject"][0]
+    : news["dc:subject"] || "未分類";
 
   return (
     <div className="flex flex-col w-[220px] h-[214px] bg-[#3A86FF]/10 rounded-lg overflow-hidden shadow-lg">
       <div className="relative h-[106px] w-full">
-        <Image 
-          src={imageUrl} 
-          alt={news.title} 
-          fill 
-          className="object-cover" 
-          onError={(e) => { e.currentTarget.src = FALLBACK_IMAGE_URL; }} // 画像ロードエラー時のフォールバック
+        <SafeImage
+          src={imageUrl}
+          alt={news.title}
+          fill
+          sizes="220px"
+          className="object-cover"
         />
       </div>
       <div className="p-3 text-white relative">
@@ -49,7 +48,6 @@ const NewsCard = ({ news }: { news: HatenaItem }) => {
           </div>
           <span>10分</span>
         </div>
-        {/* アイコン部分は省略 */}
       </div>
     </div>
   );
@@ -66,7 +64,6 @@ export default function HomePage() {
       .then((data) => {
         if (data.error) setError(data.error);
         else setnewTopics(data);
-        console.log(data);
       })
       .catch(() => setError("Failed to load data"));
   }, []);
@@ -81,20 +78,8 @@ export default function HomePage() {
       .catch(() => setError("Failed to load data"));
   }, []);
 
-  // useEffect(() => {
-  //   fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=769a6d7f91e34fc69e1b5469abb3d6cf')
-  //   .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.error) setError(data.error);
-  //       else setpopularNews(data.articles);
-  //       console.log(data)
-  //     })
-  //     .catch(() => setError("Failed to load data"));
-  // }, [])
-
   return (
     <div className="min-h-screen bg-background-light text-white p-4 max-w-md mx-auto">
-      {/* Header */}
       <header className="relative mb-6">
         <h1 className="text-2xl font-bold text-center">Today&apos;s Summary</h1>
         <SettingIcon
@@ -103,7 +88,6 @@ export default function HomePage() {
         />
       </header>
 
-      {/* Error handling */}
       {error && <p className="text-red-400">{error}</p>}
 
       {/* Voice Summary */}
@@ -114,23 +98,24 @@ export default function HomePage() {
             <span>音声で要約を聴く</span>
           </button>
           <p className="text-white text-sm leading-relaxed mt-auto">
-            今日の世界を音声で簡単に
-            チェックできます！
+            今日の世界を音声で簡単にチェックできます！
           </p>
         </div>
-        <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-lg">
-          <Image
+
+        {/* graphic */}
+        <div className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-lg relative">
+          <SafeImage
             src="/graphic-nemura.png"
             alt="Description"
-            width={300}
-            height={300}
+            fill
+            sizes="300px"
             className="rounded-lg object-cover"
           />
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-2 border-[#3A86FF]/60 rounded-xl h-[38px] p-1 mb-5">
+      {/* <div className="flex border-2 border-[#3A86FF]/60 rounded-xl h-[38px] p-1 mb-5">
         <button className="flex-1 flex items-center justify-center text-white font-semibold bg-voice-button rounded-md">
           すべて
         </button>
@@ -140,17 +125,21 @@ export default function HomePage() {
         <button className="flex-1 flex items-center justify-center text-gray-400 font-semibold rounded-md">
           トピック
         </button>
-      </div>
+      </div> */}
 
       {/* Trending News */}
       <div className="mb-8">
         <div className="flex justify-between items-center mb-5">
-          <h2 className="text-xl font-bold">トレンドニュース</h2>
-          <div className="flex items-center">
+          <div className="">
+            <h2 className="title font-bold">トピック</h2>
+            <p className="desc">選択されたトピックに基づくおすすめ</p>
+          </div>
+          <Link href="/today-news/topic-news" className="flex items-center">
             <p className="text-[#3A86FF]">すべて見る</p>
             <ArrowRightIcon className="w-4 h-4 text-[#3A86FF] cursor-pointer" />
-          </div>
+          </Link>
         </div>
+
         <div className="flex space-x-4 overflow-x-auto pb-2">
           {newTopics.slice(0, 5).map((news, idx) => (
             <div key={idx} className="w-[220px] flex-shrink-0">
@@ -163,44 +152,49 @@ export default function HomePage() {
       {/* Topic News */}
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Topic News</h2>
-          <Link href="/ai-summary/1" className="flex items-center">
+          <h2 className="text-xl font-bold">最新ニュース</h2>
+          <Link href="/today-news/latest-news" className="flex items-center">
             <p className="text-[#3A86FF]">すべて見る</p>
             <ArrowRightIcon className="w-4 h-4 text-[#3A86FF] cursor-pointer" />
           </Link>
         </div>
+
         <div className="space-y-4">
-          {popularNews.slice(0,10).map((i) => (
+          {popularNews.slice(0, 10).map((i) => (
             <div
               key={i.title}
               className="flex space-x-3 bg-[#3A86FF]/10 rounded-xl p-2 relative"
             >
-              {/* 画像 */}
               <div className="w-20 h-20 relative flex-shrink-0">
-                <Image
+                <SafeImage
                   src={i["hatena:imageurl"]}
-                  // src={i.urlToImage}
                   alt={i.title}
                   fill
+                  sizes="80px"
                   className="object-cover rounded-lg"
                 />
               </div>
-              {/* 右側コンテンツ */}
+
               <div className="flex-grow flex flex-col">
-                {/* タイトル */}
                 <h3 className="text-base font-semibold line-clamp-2">
                   {i.title}
                 </h3>
+
                 <div className="flex justify-between items-center text-xs text-gray-400 mt-2">
                   <div className="flex items-center space-x-2">
                     <span className="text-blue-400">🌐</span>
-                    <span>{i["dc:subject"][0]}</span>
+                    <span>
+                      {Array.isArray(i["dc:subject"])
+                        ? i["dc:subject"][0]
+                        : i["dc:subject"]}
+                    </span>
                   </div>
-                  <div>
+                  {/* <div>
                     <span>10分</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
+
               <div className="absolute bottom-2 right-2 flex items-center space-x-2">
                 <AddCircleIcon className="w-7 h-7 text-gray-400 cursor-pointer" />
                 <PlayCircleIcon className="w-7 h-7 text-gray-400 cursor-pointer" />
