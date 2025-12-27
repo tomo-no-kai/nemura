@@ -1,0 +1,14 @@
+import HeaderNav from '@/components/HeaderNav'
+import React from 'react'
+import HomeHeader from './HomeHeader'
+
+export default function HomeLayout({ children } : { children: React.ReactNode }) {
+    return (
+        <div className='min-h-screen bg-background-light text-white p-4 max-w-md mx-auto'>
+
+            <HomeHeader/>
+
+            { children }
+        </div>
+    )
+}

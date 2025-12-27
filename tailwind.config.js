@@ -3,8 +3,9 @@ const { nextui } = require("@nextui-org/react");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -13,6 +14,7 @@ module.exports = {
         "white-soft": "#FEFEFE",
         "black-soft": "#222222",
       },
+      
       backgroundImage: {
         "background-light":
           "linear-gradient(to bottom, #00050c, #02172c, #04234a)",
@@ -29,7 +31,7 @@ module.exports = {
         max: "32px",
       },
       fontFamily: {
-        sans: ['"Zen Maru Gothic"', "sans-serif"],
+        sans: ['var(--font-zen-maru)', 'sans-serif'],
       },
     },
   },

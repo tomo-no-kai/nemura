@@ -1,4 +1,6 @@
-import { SettingIcon } from '@/assets/icons'
+'use client';
+
+import { SettingIcon } from '@/app/assets/icons'
 import { useRouter } from 'next/navigation'
 
 export default function HeaderNav({ title } : any) {

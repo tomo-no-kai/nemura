@@ -18,14 +18,16 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
+    "baseUrl": "",
     "paths": {
       "@/*": ["./*"], 
-      "@assets/*": ["assets/*"], 
-      "@icons": ["assets/icons/index"], 
-      "@icons/*": ["assets/icons/*"]
-    }
+      "@assets/*": ["app/assets/*"], 
+      "@icons": ["app/assets/icons/index"], 
+      "@icons/*": ["app/assets/icons/*"]
+    },
+    "types": ["node"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+
 }

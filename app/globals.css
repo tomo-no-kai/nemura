@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    font-family:"Zen Maru Gothic", sans-serif;
+}
 
 
 .fade-enter {
@@ -24,7 +32,7 @@
 }
 
 .normal{
-  @apply text-[16px] font-semibold;
+  @apply text-[14px];
 }
 
 .desc{
