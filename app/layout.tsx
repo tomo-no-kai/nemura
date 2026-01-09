@@ -6,6 +6,9 @@ import { Providers } from './provider'
 export const metadata: Metadata = {
   title: 'Nemura',
   description: '今日の世界を、Nemuraとともに。',
+  icons:{
+    icon: '/nemura.png'
+  }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -17,14 +17,23 @@ module.exports = {
       colors: {
         'white-soft': '#FEFEFE',
         'black-soft': '#222222', 
+<<<<<<< HEAD
         'gray-soft': '#4B5563', 
+=======
+        'gray-soft': '#4B5563',
+>>>>>>> remotes/origin/feature/voice-player
         'button': '#1D57A6',
       },
       
       backgroundImage: {
+<<<<<<< HEAD
         "background-light":
           "linear-gradient(to bottom, #00050c, #02172c, #04234a)",
         "voice-button": "linear-gradient(to bottom, #0D1B2A, #3A86FF)",
+=======
+        'background-light': 'linear-gradient(to bottom, #00040a, #003569, #004E9A)',
+        'voice-button': 'linear-gradient(to bottom, #0D1B2A, #3A86FF)',
+>>>>>>> remotes/origin/feature/voice-player
       },
       spacing: {
         "space-2x": "16px",
@@ -38,6 +47,17 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-zen-maru)', 'sans-serif'],
+      },
+
+      // アニメーション
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(200%)' },  // 親の右外から開始
+          '100%': { transform: 'translateX(-150%)' }, // 親の左外まで移動
+        },
+      },
+      animation: {
+        marquee: 'marquee 12s linear infinite',
       },
     },
   },
