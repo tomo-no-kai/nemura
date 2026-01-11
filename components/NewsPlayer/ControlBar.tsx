@@ -1,3 +1,5 @@
+// コントロールバー
+
 'use client'
 
 import React, { useState } from 'react'
@@ -8,9 +10,11 @@ import { OnexMobiledataIcon, BedtimeIcon, PlayListAddCheckIcon } from "@icons/in
 type Props = {
   playbackSpeed: string
   setPlaybackSpeed: React.Dispatch<React.SetStateAction<string>>
+  sleepMinutes: number | 'track-end'
+  setSleepMinutes: React.Dispatch<React.SetStateAction<number | 'track-end'>>
 }
 
-export default function ControlBar({ playbackSpeed, setPlaybackSpeed }: Props) {
+export default function ControlBar({ playbackSpeed, setPlaybackSpeed, sleepMinutes, setSleepMinutes }: Props) {
   const [sleepOpen, setSleepOpen] = useState(false)
   const [speedOpen, setSpeedOpen] = useState(false)
 
@@ -26,9 +30,7 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed }: Props) {
           <OnexMobiledataIcon className="w-8 h-8" />
         </button>
 
-        {/* 速度モーダル */}
         <div className="relative">
-          {/* オーバーレイ */}
           <div
             onClick={() => setSpeedOpen(false)}
             className={`
@@ -37,7 +39,6 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed }: Props) {
               ${speedOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
             `}
           />
-          {/* モーダル本体 */}
           <div
             className={`
               absolute bottom-full mb-12 z-50
@@ -45,14 +46,14 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed }: Props) {
               ${speedOpen
                 ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
                 : "opacity-0 translate-y-2 scale-95 pointer-events-none"}
-              left-[calc(50%-40px)]  /* アイコン左にずらす量をここで微調整可能 */
+              left-[calc(50%-40px)]
             `}
           >
-          <PlaybackSpeedModal
-            selectedSpeed={playbackSpeed}      // string を渡す
-            setSelectedSpeed={setPlaybackSpeed} // string を更新
-            onCloseAction={() => setSpeedOpen(false)}
-          />
+            <PlaybackSpeedModal
+              selectedSpeed={playbackSpeed}
+              setSelectedSpeed={setPlaybackSpeed}
+              onCloseAction={() => setSpeedOpen(false)}
+            />
           </div>
         </div>
       </div>
@@ -66,9 +67,7 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed }: Props) {
           <BedtimeIcon className="w-7 h-7" />
         </button>
 
-        {/* モーダル */}
         <div className="relative">
-          {/* オーバーレイ */}
           <div
             onClick={() => setSleepOpen(false)}
             className={`
@@ -77,7 +76,6 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed }: Props) {
               ${sleepOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
             `}
           />
-          {/* モーダル本体 */}
           <div
             className={`
               absolute bottom-full mb-12 left-1/2 -translate-x-1/2 z-50
@@ -87,7 +85,10 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed }: Props) {
                 : "opacity-0 translate-y-2 scale-95 pointer-events-none"}
             `}
           >
-            <SleepTimerModal onCloseAction={() => setSleepOpen(false)} />
+            <SleepTimerModal
+              onCloseAction={() => setSleepOpen(false)}
+              onSelectTime={(minutes) => setSleepMinutes(minutes)}
+            />
           </div>
         </div>
       </div>
