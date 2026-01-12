@@ -39,7 +39,7 @@ export default function TopicSelectionPage() {
   return (
     <Background>
       <div className="relative w-full h-[100dvh] flex flex-col items-center overflow-hidden pt-[54px]">
-      <NavigationHeader hideSettingIcon />
+      <NavigationHeader showSetting={false} />
         {/* テキストエリア */}
         <div className="mt-[20%] w-full px-8 space-y-2 z-10">
           <h1 className="text-white-soft text-[20px] font-bold tracking-tight leading-tight text-left drop-shadow-white-glow-str">

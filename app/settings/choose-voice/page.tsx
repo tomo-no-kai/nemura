@@ -30,7 +30,7 @@ export default function ChooseVoicePage() {
   return (
     <Background>
       <div className="relative w-full h-[100dvh] flex flex-col items-center overflow-hidden pt-[54px]">
-      <NavigationHeader hideSettingIcon />
+        <NavigationHeader showSetting={false} />
         
         {/* テキストエリア */}
         <div className="mt-[30%] w-full px-8 space-y-2 z-10">
