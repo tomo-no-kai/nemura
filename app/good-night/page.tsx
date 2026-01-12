@@ -56,7 +56,7 @@ export default function GoodNightPage() {
       >
         {/* Header */}
         <div className="h-[54px] shrink-0">
-          <NavigationHeader />
+          <NavigationHeader showSetting={false} />
         </div>
 
         {/* 再生中 */}
