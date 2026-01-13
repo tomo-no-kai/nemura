@@ -15,7 +15,7 @@ export default function HeaderNav({ title } : any) {
                 </button>
                 <h1 className="title text-center">{ title }</h1>
                 <SettingIcon
-                    className="text-gray-400 cursor-pointer"
+                    className="text-gray-400 w-6 h-6 cursor-pointer"
                     fontSize="medium"
                 />
             </header>
