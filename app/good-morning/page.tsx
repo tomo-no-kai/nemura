@@ -60,7 +60,7 @@ export default function GoodNightPage() {
               </button>
 
               <button
-                onClick={() => router.push('/voice-player')}
+                onClick={() => router.push('/playlist')}
                 className="px-6 py-2 rounded-full bg-[#F7EED2] text-button font-medium
                           backdrop-blur-md transition-all active:scale-95"
               >
