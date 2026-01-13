@@ -10,7 +10,7 @@ export default function HomeHeader() {
     return (
         <header className="relative mb-6">
             <h1 className="text-2xl mb-4 font-bold text-center">今日の Nemura</h1>
-           
+        
             <SettingIcon
                 className="text-gray-400 w-6 h-6 cursor-pointer absolute right-0 top-1"
                 fontSize="medium"

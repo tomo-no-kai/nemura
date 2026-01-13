@@ -17,7 +17,10 @@ function WelcomeContent() {
   const searchParams = useSearchParams();
 
   const lines = [
-    <>Zzz...</>,
+    <div key="mitten">
+      <p>zzz...</p>
+      {/* <i className="fa-solid fa-mitten text-4xl animate-poke"></i> */}
+    </div>,
     <>&#65281;</>,
     <>
       はじめまして...!<br />
@@ -62,11 +65,11 @@ function WelcomeContent() {
   const isFirstPage = index === 0;
 
   return (
-    <div 
+    <div
       className={`relative w-full h-[100dvh] overflow-hidden touch-none ${isFirstPage ? "cursor-pointer" : ""}`}
       onClick={isFirstPage ? handleNext : undefined}
     >
-      
+
       {/* セリフ部分 */}
       <div className="absolute left-0 top-[27%] w-full flex justify-center px-6 drop-shadow-white-glow">
         <Fade key={index}>
@@ -78,17 +81,21 @@ function WelcomeContent() {
       <div
         className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center"
         style={{
-          top: "50%", 
-          width: "95%", 
+          top: "50%",
+          width: "95%",
           maxWidth: "400px"
         }}
       >
         {/* アニメーション本体コンテナ */}
         <div className="relative shrink-0" style={{ width: 280, height: 280 }}>
-          
+
           {/* 指さしアイコン */}
           {isFirstPage && (
             <div className="absolute -right-0 -top-4 z-20 animate-bounce pointer-events-none" style={{ animationDuration: '2s' }}>
+              <i
+                className="fa-solid fa-mitten absolute right-[100px] top-[60px] -translate-y-1/2
+                text-4xl text-white-soft animate-poke drop-shadow-white-glow drop-shadow-cyan-500/50"
+              />
               <FingerPointIcon className="w-18 h-18 text-white-soft drop-shadow-white-glow" />
             </div>
           )}

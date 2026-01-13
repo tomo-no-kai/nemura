@@ -20,7 +20,6 @@ export default function AudioLoading() {
       // フェードアウトが終わるまで少し待ってから遷移
       setTimeout(() => router.push('/home'), 500)
     }
-
     startAudio()
   }, [router])
 
