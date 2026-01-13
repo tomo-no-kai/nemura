@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import Background from "@/components/Background"
 import Lottie from "lottie-react"
 import smileNemura from "@/assets/animations/smile-nemura.json"
@@ -9,6 +10,7 @@ import Logo from '@/assets/graphics/logo.svg'
 export default function GoodNightPage() {
   const [mounted, setMounted] = useState(false)
   const [answeredNo, setAnsweredNo] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     setMounted(true)
@@ -58,6 +60,7 @@ export default function GoodNightPage() {
               </button>
 
               <button
+                onClick={() => router.push('/voice-player')}
                 className="px-6 py-2 rounded-full bg-[#F7EED2] text-button font-medium
                           backdrop-blur-md transition-all active:scale-95"
               >
