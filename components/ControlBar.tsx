@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { OnexMobiledataIcon, BedtimeIcon, PlayListAddCheckIcon } from "@icons/index";
+import { OnexMobiledataIcon, BedtimeIcon, PlayListAddCheckIcon } from "@/app/assets/icons/index";
 
 export default function ControlBar() {
   return (

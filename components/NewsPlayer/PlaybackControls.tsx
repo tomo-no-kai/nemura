@@ -7,7 +7,7 @@ import {
   Forward10Icon,
   Replay10Icon,
   SkipNextIcon,
-} from "@icons/index"
+} from "@/app/assets/icons/index";
 import PauseVoiceRing from '@/assets/graphics/pause-voice-ring.svg'
 import PlayVoiceRing from '@/assets/graphics/play-voice-ring.svg'
 

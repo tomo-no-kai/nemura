@@ -8,10 +8,9 @@ import DialogueBox from "@/components/DialogueBox";
 import LottiePlayer from "@/components/LottiePlayer";
 import Fade from "@/components/Fade";
 
-import { ArrowRightIcon, FingerPointIcon } from "@/app/assets/icons/index";
-
 import sleepJson from "@/app/assets/animations/sleep-nemura.json";
 import smileJson from "@/app/assets/animations/smile-nemura.json";
+import { ArrowRightIcon, FingerPointIcon } from "../assets/icons/index";
 
 function WelcomeContent() {
   const router = useRouter();
