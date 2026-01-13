@@ -1,16 +1,23 @@
 import React, { ReactNode } from "react";
 
+type BackgroundVariant = "morning" | "day" | "night";
+
 type BackgroundProps = {
-  children: ReactNode
-  variant?: 'day' | 'night'
-}
+  children: ReactNode;
+  variant?: BackgroundVariant;
+};
 
 export default function Background({
   children,
-  variant = 'day',
+  variant = "day",
 }: BackgroundProps) {
-  const bgImage =
-    variant === 'night' ? "/bg-night.png" : "/bg.png"
+  const bgMap: Record<BackgroundVariant, string> = {
+    morning: "/bg-morning.png",
+    day: "/bg.png",
+    night: "/bg-night.png",
+  };
+
+  const bgImage = bgMap[variant];
 
   return (
     <div className="relative w-full h-[100dvh] overflow-hidden">
@@ -22,5 +29,5 @@ export default function Background({
         {children}
       </div>
     </div>
-  )
+  );
 }
