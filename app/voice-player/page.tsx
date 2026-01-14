@@ -33,7 +33,10 @@ export default function Page() {
           item={currentItem}
         />
         ) : (
-          <p className="text-white/70 p-6">再生するニュースがありません</p>
+          <NewsPlayer
+            showNemura
+            item={currentItem || { title: "再生するニュースがありません" }}
+          />
         )}
       </div>
 
