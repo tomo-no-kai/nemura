@@ -1,7 +1,6 @@
 'use client';
 
-import Image from 'next/image';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 
 import sample from '@/public/sample.jpg';
@@ -108,12 +107,10 @@ export default function NewsDetailsPage() {
 
             {/* Hero image */}
             <div className="w-full h-[250px] relative overflow-hidden">
-
                 <SafeImage
-                    alt={newsItem.title}
-                    fill
                     src={imageUrl}
-                    className="object-cover"
+                    alt={newsItem.title}
+                    className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
@@ -126,11 +123,9 @@ export default function NewsDetailsPage() {
                 </button>
 
                 {/* Title */}
-                <div>
-                    <h1 className="text-3xl font-bold leading-snug absolute normal text-white bottom-4 ms-4">
-                        {newsItem.title}
-                    </h1>
-                </div>
+                <h1 className="text-3xl font-bold leading-snug absolute bottom-4 left-4 text-white">
+                    {newsItem.title}
+                </h1>
             </div>
 
             {/* Content */}
@@ -141,9 +136,8 @@ export default function NewsDetailsPage() {
                         <div className="w-10 h-10 relative flex-shrink-0">
                             <SafeImage
                                 src={imageUrl}
-                                fill
                                 alt={category}
-                                className="rounded-full object-cover"
+                                className="w-full h-full rounded-full object-cover"
                             />
                         </div>
                         <span className="text-sm font-semibold text-blue-400">{category}</span>
@@ -158,8 +152,6 @@ export default function NewsDetailsPage() {
                         <i className={`fa-regular fa-circle-play ${isPlaying ? 'animate-spin' : ''}`}></i>
                     </button>
                 </div>
-
-
 
                 {/* Description/Summary */}
                 <div className="pt-4">
@@ -183,5 +175,5 @@ export default function NewsDetailsPage() {
                 )}
             </div>
         </div>
-    )
+    );
 }

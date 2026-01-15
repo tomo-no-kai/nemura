@@ -39,7 +39,7 @@ export default function VerticalNewsCard({
   return (
     <div className="flex flex-col w-[220px] h-[214px] bg-[#3A86FF]/10 rounded-xl overflow-hidden shadow-lg relative cursor-pointer hover:bg-[#3A86FF]/20 transition-colors">
       <div className="relative h-[300px] w-full">
-        {imageUrl && <SafeImage src={imageUrl} alt={item.title} fill className="object-cover" />}
+        {imageUrl && <SafeImage src={imageUrl} alt={item.title} className="object-cover" />}
       </div>
       <div className="p-3 text-white relative flex flex-col h-full">
         <h3 className="text-sm font-semibold leading-5 min-h-[2.5rem] line-clamp-2">{item.title}</h3>

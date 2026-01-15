@@ -14,9 +14,9 @@ export default function BottomNavigationBar() {
     const router = useRouter()
 
     const navItems = [
-        { label: 'Home', icon: HomeIcon, path: '/home' },
-        { label: 'Listen', icon: SpeechToTextIcon, path: '/voice-player', small: true },
-        { label: 'Playlist', icon: PlayListAddCheckIcon, path: '/playlist' },
+        { label: 'Home', icon: HomeIcon, path: '/home', size: 32 },
+        { label: 'Listen', icon: SpeechToTextIcon, path: '/voice-player', size: 28 },
+        { label: 'Playlist', icon: PlayListAddCheckIcon, path: '/playlist', size: 32 },
     ]
 
     return (
@@ -25,7 +25,7 @@ export default function BottomNavigationBar() {
                 {navItems.map((item) => {
                     const isActive = pathname === item.path
                     const Icon = item.icon
-                    const iconSizeClass = item.small ? 'w-7 h-7' : 'w-8 h-8'
+                    const iconSize = item.size
 
                     return (
                         <button
@@ -35,13 +35,13 @@ export default function BottomNavigationBar() {
                         >
                             <div className="relative flex items-center justify-center">
                                 <Icon
-                                    className={`transition-colors duration-300 ${isActive ? 'text-button' : 'text-white-soft'
-                                        } ${iconSizeClass}`}
+                                    className={isActive ? 'text-button' : 'text-white-soft'}
+                                    width={iconSize}
+                                    height={iconSize}
                                 />
                             </div>
                             <span
-                                className={`text-xs text-center font-medium transition-colors duration-300 ${isActive ? 'text-button' : 'text-white-soft'
-                                    }`}
+                                className={`text-xs text-center font-medium transition-colors duration-300 ${isActive ? 'text-button' : 'text-white-soft'}`}
                             >
                                 {item.label}
                             </span>

@@ -1,8 +1,6 @@
 "use client";
 import "../globals.css";
-import {
-  ChevronRightIcon,
-} from "@icons/index";
+import { ChevronRightIcon } from "@icons/index";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
@@ -11,7 +9,7 @@ import NavigationHeader from "@/components/NavigationHeader";
 import VoiceNewsCard, { VoiceItem } from "@/components/NewsCard";
 import VerticalNewsCard from "@/components/VerticalNewsCard";
 import BottomNavigationBar from "@/components/BottomNavigationBar";
-import { Characters } from "@/app/ai-character/config"; // キャラクター情報をインポート
+import { Characters } from "@/app/ai-character/config";
 
 type HatenaItem = {
   title: string;
@@ -46,7 +44,6 @@ export default function HomePage() {
       .catch(() => setError("Failed to load data"));
   }, []);
 
-  // playAudio 関数
   const playAudio = async (text: string, speaker: string) => {
     try {
       const res = await axios.post("/api/audio", { text, speaker });
@@ -69,25 +66,23 @@ export default function HomePage() {
   return (
     <div className="bg-background-light h-screen w-full px-0 relative flex flex-col overflow-hidden">
       <BottomNavigationBar />
-      <div className=" shrink-0">
+      <div className="shrink-0">
         <NavigationHeader title="最新ニュース" showBack={false} />
       </div>
       {error && <p className="text-red-400">{error}</p>}
 
       {/* graphic */}
       <div className="flex justify-center my-4">
-        <div className="relative w-[398px]  h-[132px] md:w-48 md:h-48">
+        <div className="relative w-[398px] h-[132px] md:w-48 md:h-48">
           <SafeImage
             src="/graphic-nemura.png"
             alt="Description"
-            fill
-            sizes="400px"
-            className="object-contain rounded-lg"
+            className="w-full h-full object-contain rounded-lg"
           />
         </div>
       </div>
 
-      <div className="">
+      <div>
         {/* Trending News */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-5">
@@ -119,7 +114,6 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-
 
         {/* Topic News */}
         <div className="flex flex-col" style={{ height: 'calc(100vh - 54px - 16px - 550px)' }}>
