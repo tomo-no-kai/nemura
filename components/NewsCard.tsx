@@ -53,13 +53,14 @@ export default function NewsCard({
 
       {/* 画像 */}
       <div className="w-[100px] h-full relative flex-shrink-0">
-        {imageUrl && (
+        imageUrl ? (
           <SafeImage
-            src={imageUrl}
-            alt={item.title}
-            className="w-full h-full object-cover"
-          />
-        )}
+          src={imageUrl}
+          alt={item.title}
+          fill
+          className="object-cover"
+        />
+        )
       </div>
 
       {/* テキスト */}

@@ -1,22 +1,19 @@
-'use client'
+"use client";
+import Image from "next/image";
+import { useState } from "react";
 
-const FALLBACK = '/default-image.png'
+const FALLBACK = "/default-image.png";
 
-export default function SafeImage({
-  src,
-  alt = '',
-  ...props
-}: React.ImgHTMLAttributes<HTMLImageElement>) {
-  return (
-    <img
-      {...props}
-      src={src || FALLBACK}
-      alt={alt}
-      loading="lazy"
-      referrerPolicy="no-referrer"
-      onError={(e) => {
-        e.currentTarget.src = FALLBACK
-      }}
-    />
-  )
+export default function SafeImage({ src, alt,sizes, ...props }: any) {
+    const [imgSrc, setImgSrc] = useState(src || FALLBACK);
+
+    return (
+        <Image
+            {...props}
+            src={imgSrc}
+            sizes={sizes}
+            alt={alt}
+            onError={() => setImgSrc(FALLBACK)}
+        />
+    );
 }

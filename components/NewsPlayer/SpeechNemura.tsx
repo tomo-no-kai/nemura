@@ -17,7 +17,7 @@ export default function SpeechNemura({ isPlaying }: Props) {
   useEffect(() => {
     setOpacity(0)
     const timeout = setTimeout(() => {
-      setCurrentAnimation(isPlaying ? readJson : sleepJson)
+      setCurrentAnimation(isPlaying ? smileJson : sleepJson)
       setOpacity(1)
     }, 200)
     return () => clearTimeout(timeout)
