@@ -71,7 +71,7 @@ module.exports = {
         },
       },
       animation: {
-        marquee: "marquee 12s linear infinite",
+        marquee: "marquee 40s linear infinite",
         bounceRight: "bounceRight 0.6s ease-in-out infinite",
         bounceSlow: "bounceSlow 5.0s ease-in-out infinite", // ヘッドフォン
         dot1: "dot1 2.5s infinite ease-in-out 0s",

@@ -6,12 +6,12 @@ import { useState, useEffect } from "react"
 import LottiePlayer from "@/components/LottiePlayer"
 import SpeechVoiceRing from '@/assets/graphics/speech-ring.svg'
 import sleepJson from "@/assets/animations/sleep-nemura.json"
-import smileJson from "@/assets/animations/smile-nemura.json"
+import readJson from "@/assets/animations/read-nemura.json"
 
 type Props = { isPlaying: boolean }
 
 export default function SpeechNemura({ isPlaying }: Props) {
-  const [currentAnimation, setCurrentAnimation] = useState(isPlaying ? smileJson : sleepJson)
+  const [currentAnimation, setCurrentAnimation] = useState(isPlaying ? readJson : sleepJson)
   const [opacity, setOpacity] = useState(1)
 
   useEffect(() => {
