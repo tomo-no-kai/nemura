@@ -7,8 +7,7 @@ export default function HeaderNav({ title } : any) {
                 <i className="fa-solid fa-arrow-left"></i>
                 <h1 className="title text-center">{ title }</h1>
                 <SettingIcon
-                    className="text-gray-400 cursor-pointer"
-                    fontSize="medium"
+                    className="text-gray-400 cursor-pointer scale-[1]"
                 />
             </header>
         </div>

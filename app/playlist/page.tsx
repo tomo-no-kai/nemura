@@ -108,8 +108,8 @@ export default function PlaylistPage() {
         <div className="bg-background-light h-screen w-full relative flex flex-col overflow-hidden">
             <div className="relative w-full flex flex-col overflow-hidden">
                 <div className="h-[54px] shrink-0" />
-                <NavigationHeader title="選択されたプレイリスト" />
                 <BottomNavigationBar />
+                <NavigationHeader title="選択されたプレイリスト" />
 
                 <div className="flex-1 flex flex-col px-6 mt-6 z-20 overflow-y-auto pb-32">
                     <div className="space-y-4">

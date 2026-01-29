@@ -69,7 +69,7 @@ export default function HomePage() {
   return (
     <div className="bg-background-light h-screen w-full px-0 relative flex flex-col overflow-hidden">
       <BottomNavigationBar />
-      <div className=" shrink-0">
+      <div className="shrink-0">
         <NavigationHeader title="最新ニュース" showBack={false} />
       </div>
       {error && <p className="text-red-400">{error}</p>}
@@ -98,7 +98,7 @@ export default function HomePage() {
             </div>
             <Link href="/topic" className="flex items-center pt-8">
               <p className="text-[#3A86FF]">すべて見る</p>
-              <ChevronRightIcon className="w-4 h-4 text-[#3A86FF] cursor-pointer" />
+              <ChevronRightIcon className="scale-[0.8] text-[#3A86FF] cursor-pointer" />
             </Link>
           </div>
 
@@ -128,7 +128,7 @@ export default function HomePage() {
             <h2 className="text-xl font-bold text-white-soft">最新ニュース</h2>
             <Link href="/latest" className="flex items-center pt-2">
               <p className="text-[#3A86FF]">すべて見る</p>
-              <ChevronRightIcon className="w-4 h-4 text-[#3A86FF] cursor-pointer" />
+              <ChevronRightIcon className="scale-[0.8] text-[#3A86FF] cursor-pointer" />
             </Link>
           </div>
 

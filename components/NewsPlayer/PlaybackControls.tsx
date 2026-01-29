@@ -35,7 +35,7 @@ export default function PlaybackControls({
           onClick={onRewind}
           className="text-white-soft opacity-80 hover:opacity-100 transition-all active:scale-90"
         >
-          <Replay10Icon className="w-full h-full" />
+          <Replay10Icon className="scale-[1.3]" />
         </button>
 
         {/* 前へ */}
@@ -43,7 +43,7 @@ export default function PlaybackControls({
           onClick={onPrev}
           className="text-white-soft opacity-90 hover:opacity-100 transition-all active:scale-90 rotate-180"
         >
-          <SkipNextIcon className="w-full h-full" />
+          <SkipNextIcon className="scale-[2.0]" />
         </button>
 
         {/* 再生・一時停止 */}
@@ -65,7 +65,7 @@ export default function PlaybackControls({
           onClick={onNext}
           className="text-white-soft opacity-90 hover:opacity-100 transition-all active:scale-90"
         >
-          <SkipNextIcon className="w-full h-full" />
+          <SkipNextIcon className="scale-[2.0]" />
         </button>
 
         {/* 10秒進む */}
@@ -73,7 +73,7 @@ export default function PlaybackControls({
           onClick={onForward}
           className="text-white-soft opacity-80 hover:opacity-100 transition-all active:scale-90"
         >
-          <Forward10Icon className="w-full h-full" />
+          <Forward10Icon className="scale-[1.3]" />
         </button>
       </div>
     </div>

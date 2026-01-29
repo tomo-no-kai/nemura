@@ -29,7 +29,7 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed, sleepMinut
           onClick={() => setSpeedOpen(!speedOpen)}
           className="text-white-soft/80 hover:text-white transition-colors"
         >
-          <OnexMobiledataIcon className="w-full h-full" />
+          <OnexMobiledataIcon className="scale-[1.5]" />
         </button>
 
         <div className="relative">
@@ -66,7 +66,7 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed, sleepMinut
           onClick={() => setSleepOpen(!sleepOpen)}
           className="text-white-soft/80 hover:text-white transition-colors"
         >
-          <BedtimeIcon className="w-full h-full" />
+          <BedtimeIcon className="scale-[1.3]" />
         </button>
 
         <div className="relative">
@@ -100,7 +100,7 @@ export default function ControlBar({ playbackSpeed, setPlaybackSpeed, sleepMinut
         onClick={() => router.push('/playlist')}
         className="text-white-soft/80 hover:text-white transition-colors"
       >
-        <PlayListAddCheckIcon className="w-full h-full" />
+        <PlayListAddCheckIcon className="scale-[1.6]" />
       </button>
 
     </div>

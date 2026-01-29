@@ -15,7 +15,7 @@ export default function NavigationHeader({ showSetting = true, showBack = true, 
   const router = useRouter()
 
   return (
-    <header className="flex items-center justify-between px-6 h-[54px] w-full bg-transparent">
+    <header className="flex items-center justify-between h-[54px] w-full bg-transparent">
       {/* 戻るボタン */}
       {showBack ? (
         <button
