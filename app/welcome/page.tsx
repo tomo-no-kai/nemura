@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react"; // Suspense, useEffectを追加
-import { useRouter, useSearchParams } from "next/navigation"; // useSearchParamsを追加
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import Background from "@/components/Background";
 import DialogueBox from "@/components/DialogueBox";
@@ -16,11 +16,9 @@ function WelcomeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  // Fixed: Use React fragments and spans instead of divs to avoid hydration errors
   const lines = [
-    <div key="mitten">
-      <p>zzz...</p>
-      {/* <i className="fa-solid fa-mitten text-4xl animate-poke"></i> */}
-    </div>,
+    <>zzz...</>,
     <>&#65281;</>,
     <>
       はじめまして...!<br />
@@ -29,9 +27,11 @@ function WelcomeContent() {
     <>
       この世界では毎日、<br />いろんなニュースが<br />あつまってきます
     </>,
-    <>あなたはニュースを聞きに<br />
+    <>
+      あなたはニュースを聞きに<br />
       いらしたんですよね？<br />
-      少し質問よろしいですか？</>,
+      少し質問よろしいですか？
+    </>,
   ];
 
   // URLの index パラメータを取得
@@ -96,7 +96,6 @@ function WelcomeContent() {
                 className="fa-solid fa-mitten absolute right-[100px] top-[60px] -translate-y-1/2
                 text-4xl text-white-soft animate-poke drop-shadow-white-glow drop-shadow-cyan-500/50"
               />
-              <FingerPointIcon className="w-18 h-18 text-white-soft drop-shadow-white-glow" />
             </div>
           )}
 
